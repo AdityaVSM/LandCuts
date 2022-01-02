@@ -66,11 +66,8 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
                 }
-
             }
         });
-
-
 
         txt_signup.setOnClickListener(new View.OnClickListener() {
             @Override

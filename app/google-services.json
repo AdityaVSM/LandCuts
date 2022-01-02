@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "6029842666",
+    "project_id": "land-cuts",
+    "storage_bucket": "land-cuts.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:6029842666:android:2e3ad16b6041f454f69f93",
+        "android_client_info": {
+          "package_name": "com.example.landcuts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "6029842666-f80k9o1do3oinmmvb1202v3o77fji2k5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAydmMCIOrqcAO9MQASMuQnGUqqVarXLfQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "6029842666-f80k9o1do3oinmmvb1202v3o77fji2k5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -43,9 +43,6 @@ public class ProfileFragment extends Fragment {
         databaseReference = firebaseDatabase.getReference("user");
 
         getData();
-
-        user_name.setText(auth.getCurrentUser().getDisplayName());
-
         return view;
     }
 
@@ -53,10 +50,10 @@ public class ProfileFragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<String> list = new ArrayList<>();
-                String name = " ";
+                String name = "";
                 for(DataSnapshot data: snapshot.getChildren()){
-                    name = data.child("name").getValue().toString();
+                    if(data.child("uid").getValue().toString().equals(auth.getCurrentUser().getUid()))
+                        name = data.child("name").getValue().toString();
                 }
                 user_name.setText(name);
             }

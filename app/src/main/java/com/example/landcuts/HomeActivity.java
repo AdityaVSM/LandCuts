@@ -9,8 +9,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.landcuts.Fragments.HomeFragment;
+import com.example.landcuts.Fragments.SettingsFragment;
 import com.example.landcuts.Fragments.ProfileFragment;
-import com.example.landcuts.Fragments.WalletFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,8 +31,8 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         HomeFragment homeFragment = new HomeFragment();
+        SettingsFragment settingFragment = new SettingsFragment();
         ProfileFragment profileFragment = new ProfileFragment();
-        WalletFragment walletFragment = new WalletFragment();
 
 
         bottomNavigationView = findViewById(R.id.bottom_navigation_bar);
@@ -51,8 +51,8 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.profile:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, profileFragment).commit();
                         return true;
-                    case R.id.wallet:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, walletFragment).commit();
+                    case R.id.settings:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, settingFragment).commit();
                         return true;
                 }
                 return false;

@@ -7,7 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@drawable/edit_text_shape"
+    android:layout_margin="20dp"
+    android:background="@color/white"
     android:elevation="10dp">
 
     <TextView
@@ -17,7 +18,7 @@
         android:text="Land1"
         android:gravity="center"
         android:textColor="@color/black"
-        android:textSize="30sp"/>
+        android:textSize="25sp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +28,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:text="Price : "
-            android:textSize="28sp"/>
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/price"
@@ -35,7 +36,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:text="50000"
-            android:textSize="25sp"/>
+            android:textSize="18sp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -46,14 +47,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Location :"
-            android:textSize="28sp"
+            android:textSize="20sp"
             android:textColor="@color/black"/>
         <TextView
             android:id="@+id/location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Arizona"
-            android:textSize="25sp"
+            android:textSize="18sp"
             android:textColor="@color/black"/>
     </LinearLayout>
     <LinearLayout
@@ -65,14 +66,14 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:text="Available cuts : "
-            android:textSize="28sp"/>
+            android:textSize="20sp"/>
         <TextView
             android:id="@+id/no_of_available_cuts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:text="5/10"
-            android:textSize="25sp"/>
+            android:textSize="18sp"/>
     </LinearLayout>
 
 

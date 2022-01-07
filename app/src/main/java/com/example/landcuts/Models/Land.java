@@ -14,6 +14,7 @@ public class Land {
         this.name = name;
         this.location = location;
         this.initialPrice = initialPrice;
+        no_of_available_cuts = 100;
         users_who_bought_current_land = new ArrayList<>();
         this.currentPrice = initialPrice;
     }

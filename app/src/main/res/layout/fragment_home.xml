@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B5B5B5"
+    android:background="@color/white"
     tools:context=".Fragments.HomeFragment">
 
     <LinearLayout
@@ -21,6 +21,24 @@
             android:gravity="center"
             android:textColor="#FF0000"
             android:textSize="50sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:textColor="@color/black"
+                android:text="Total worth"/>
+            <TextView
+                android:id="@+id/current_worth_view"
+                android:layout_width="wrap_content"
+                android:textSize="40sp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
 
         <ListView
             android:id="@+id/diff_land_list_view"

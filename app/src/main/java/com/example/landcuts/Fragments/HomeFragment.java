@@ -31,6 +31,7 @@ public class HomeFragment extends Fragment {
 
     FirebaseDatabase database;
     ListView diff_land_list_view;
+    LandViewAdapter landViewAdapter;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -44,6 +45,10 @@ public class HomeFragment extends Fragment {
         final ArrayList<Land> arrayList = new ArrayList<>();
         database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference().child("land");
+
+
+        landViewAdapter = new LandViewAdapter(getActivity().getApplicationContext(), arrayList);
+        diff_land_list_view.setAdapter(landViewAdapter);
 
 //        DatabaseReference databaseReference = database.getReference().child("land").child("1");
 //        databaseReference.setValue(new Land("Land1","Arizona",10000));
@@ -78,10 +83,16 @@ public class HomeFragment extends Fragment {
                     else
                         currentPrice = 0;
                     Land land = new Land(name,location,initialPrice);
-
-//                    land.setNo_of_available_cuts((int)data_snapshot.child("no_of_available_cuts").getValue());
-//                    land.setCurrentPrice((long)data_snapshot.child("currentPrice").getValue());
+                    if(data_snapshot.child("no_of_available_cuts").getValue()!=null)
+                        land.setNo_of_available_cuts(((Long)data_snapshot.child("no_of_available_cuts").getValue()).intValue());
+                    else
+                        land.setNo_of_available_cuts(100);
+                    if(data_snapshot.child("currentPrice").getValue()!=null)
+                        land.setCurrentPrice((long)data_snapshot.child("currentPrice").getValue());
+                    else
+                        land.setCurrentPrice(initialPrice);
                     arrayList.add(land);
+                    landViewAdapter.add(land);
                 }
             }
 
@@ -91,14 +102,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
-
-
-        LandViewAdapter landViewAdapter = new LandViewAdapter(getActivity().getApplicationContext(), arrayList);
-
-
-        diff_land_list_view.setAdapter(landViewAdapter);
-
+        landViewAdapter.notifyDataSetChanged();
         return view;
     }
 

@@ -43,7 +43,7 @@ public class LandViewAdapter extends ArrayAdapter<Land> {
 
         land_name.setText(currentLandPosition.getName());
         location.setText(currentLandPosition.getLocation());
-        price.setText(String.valueOf(currentLandPosition.getPrice()));
+        price.setText(String.valueOf(currentLandPosition.getCurrentPrice()));
         available_cuts.setText(String.valueOf(currentLandPosition.getNo_of_available_cuts()));
 
         // then return the recyclable view

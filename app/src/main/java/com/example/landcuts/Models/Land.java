@@ -1,14 +1,21 @@
 package com.example.landcuts.Models;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Land {
     String name, location;
-    long price;
+    long initialPrice;
+    long currentPrice;
     int no_of_available_cuts;
+    ArrayList<User> users_who_bought_current_land;
 
-    public Land(String name, String location, long price) {
+    public Land(String name, String location, long initialPrice) {
         this.name = name;
         this.location = location;
-        this.price = price;
+        this.initialPrice = initialPrice;
+        users_who_bought_current_land = new ArrayList<>();
+        this.currentPrice = initialPrice;
     }
 
     public String getName() {
@@ -27,12 +34,12 @@ public class Land {
         this.location = location;
     }
 
-    public long getPrice() {
-        return price;
+    public long getInitialPrice() {
+        return initialPrice;
     }
 
-    public void setPrice(long price) {
-        this.price = price;
+    public void setInitialPrice(long initialPrice) {
+        this.initialPrice = initialPrice;
     }
 
     public int getNo_of_available_cuts() {
@@ -41,5 +48,21 @@ public class Land {
 
     public void setNo_of_available_cuts(int no_of_available_cuts) {
         this.no_of_available_cuts = no_of_available_cuts;
+    }
+
+    public long getCurrentPrice() {
+        return currentPrice;
+    }
+
+    public void setCurrentPrice(long currentPrice) {
+        this.currentPrice = currentPrice;
+    }
+
+    public ArrayList<User> getUsers_who_bought_current_land() {
+        return users_who_bought_current_land;
+    }
+
+    public void setUsers_who_bought_current_land(ArrayList<User> users_who_bought_current_land) {
+        this.users_who_bought_current_land = users_who_bought_current_land;
     }
 }

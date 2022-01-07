@@ -51,11 +51,14 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String name = "";
+                String email = "";
                 for(DataSnapshot data: snapshot.getChildren()){
-                    if(data.child("uid").getValue().toString().equals(auth.getCurrentUser().getUid()))
+                    if(data.child("uid").getValue().toString().equals(auth.getCurrentUser().getUid())) {
                         name = data.child("name").getValue().toString();
+                        email = data.child("email").getValue().toString();
+                    }
                 }
-                user_name.setText(name);
+                user_name.setText(email);
             }
 
             @Override

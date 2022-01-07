@@ -25,7 +25,7 @@ import java.util.List;
 
 public class ProfileFragment extends Fragment {
 
-    TextView user_name;
+    TextView user_name, no_of_available_cuts_view;
     FirebaseAuth auth;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;

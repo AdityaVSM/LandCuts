@@ -38,13 +38,13 @@ public class LandViewAdapter extends ArrayAdapter<Land> {
         TextView land_name = currentItemView.findViewById(R.id.land_name);
         TextView location = currentItemView.findViewById(R.id.location);
         TextView price = currentItemView.findViewById(R.id.price);
-        TextView available_cuts = currentItemView.findViewById(R.id.no_of_available_cuts);
+        TextView available_cuts = currentItemView.findViewById(R.id.no_of_available_cuts_view);
 
 
         land_name.setText(currentLandPosition.getName());
         location.setText(currentLandPosition.getLocation());
         price.setText(String.valueOf(currentLandPosition.getCurrentPrice()));
-        available_cuts.setText(String.valueOf(currentLandPosition.getNo_of_available_cuts()));
+        available_cuts.setText((String.valueOf(currentLandPosition.getNo_of_available_cuts())+"/100"));
 
         // then return the recyclable view
         return currentItemView;

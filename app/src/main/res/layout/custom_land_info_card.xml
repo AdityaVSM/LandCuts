@@ -11,67 +11,47 @@
     android:background="@color/white"
     android:elevation="10dp">
 
-    <TextView
-        android:id="@+id/land_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Land1"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:textSize="25sp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
+            android:id="@+id/land_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="Land1"
             android:textColor="@color/black"
-            android:text="Price : "
-            android:textSize="20sp"/>
+            android:textSize="25sp"/>
 
         <TextView
             android:id="@+id/price"
+            android:gravity="right"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:text="50000"
-            android:textSize="18sp"/>
+            android:textSize="25sp"/>
     </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Location :"
-            android:textSize="20sp"
-            android:textColor="@color/black"/>
         <TextView
             android:id="@+id/location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Arizona"
-            android:textSize="18sp"
-            android:textColor="@color/black"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            android:textSize="18sp"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/no_of_available_cuts_view"
+            android:layout_width="match_parent"
+            android:gravity="right"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Available cuts : "
-            android:textSize="20sp"/>
-        <TextView
-            android:id="@+id/no_of_available_cuts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:text="5/10"
             android:textSize="18sp"/>
     </LinearLayout>

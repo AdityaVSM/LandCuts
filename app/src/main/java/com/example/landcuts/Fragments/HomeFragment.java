@@ -18,6 +18,7 @@ import com.example.landcuts.Constants.Constants;
 import com.example.landcuts.Models.Land;
 import com.example.landcuts.Models.User;
 import com.example.landcuts.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,10 +29,12 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
-
+    FirebaseAuth auth;
     FirebaseDatabase database;
+    DatabaseReference databaseReference;
     ListView diff_land_list_view;
     LandViewAdapter landViewAdapter;
+    TextView current_worth_view;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -42,9 +45,11 @@ public class HomeFragment extends Fragment {
 
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
         diff_land_list_view= view.findViewById(R.id.diff_land_list_view);
+        current_worth_view = view.findViewById(R.id.current_worth_view);
+
         final ArrayList<Land> arrayList = new ArrayList<>();
         database = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = database.getReference().child("land");
+        auth = FirebaseAuth.getInstance();
 
 
         landViewAdapter = new LandViewAdapter(getActivity().getApplicationContext(), arrayList);
@@ -67,6 +72,14 @@ public class HomeFragment extends Fragment {
 //
 //        databaseReference = database.getReference().child("land").child("6");
 //        databaseReference.setValue(new Land("Land6","California",42000));
+        set_land_view(landViewAdapter,database.getReference().child("land"));
+        set_current_worth(auth,database.getReference().child("user"));
+
+
+        return view;
+    }
+
+    public void set_land_view(LandViewAdapter landViewAdapter,DatabaseReference databaseReference){
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -91,8 +104,8 @@ public class HomeFragment extends Fragment {
                         land.setCurrentPrice((long)data_snapshot.child("currentPrice").getValue());
                     else
                         land.setCurrentPrice(initialPrice);
-                    arrayList.add(land);
                     landViewAdapter.add(land);
+                    landViewAdapter.notifyDataSetChanged();
                 }
             }
 
@@ -101,9 +114,29 @@ public class HomeFragment extends Fragment {
 
             }
         });
+    }
 
-        landViewAdapter.notifyDataSetChanged();
-        return view;
+    public long set_current_worth(FirebaseAuth auth, DatabaseReference databaseReference){
+        final long[] current_worth = {0};
+//        databaseReference = database.getReference().child("user");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    if(dataSnapshot.child("uid").getValue().toString().equals(auth.getCurrentUser().getUid())){
+                        current_worth[0] = (long) dataSnapshot.child("currentBalance").getValue();
+                        current_worth_view.setText(("₹"+String.valueOf(current_worth[0]).toString()));
+                        System.out.println(current_worth[0]);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return current_worth[0];
     }
 
 

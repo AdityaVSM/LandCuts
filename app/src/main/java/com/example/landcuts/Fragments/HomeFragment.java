@@ -117,6 +117,7 @@ public class HomeFragment extends Fragment {
                         land.setCurrentPrice((long)data_snapshot.child("currentPrice").getValue());
                     else
                         land.setCurrentPrice(initialPrice);
+                    land.setId(((Long)data_snapshot.child("id").getValue()).intValue());
                     landViewAdapter.add(land);
                     landViewAdapter.notifyDataSetChanged();
                 }

@@ -7,6 +7,7 @@ import java.util.HashMap;
 public class Land implements Serializable {
     String name, location;
     long initialPrice;
+    int id;
     long currentPrice;
     int no_of_available_cuts;
     String imageUri;
@@ -19,6 +20,10 @@ public class Land implements Serializable {
         no_of_available_cuts = 100;
         users_who_bought_current_land = new ArrayList<>();
         this.currentPrice = initialPrice;
+    }
+
+    public Land() {
+
     }
 
     public String getName() {
@@ -76,4 +81,14 @@ public class Land implements Serializable {
     public void setImageUri(String imageUri) {
         this.imageUri = imageUri;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
+
+

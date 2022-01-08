@@ -1,193 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/fragment_profile"
     tools:context=".Fragments.ProfileFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="15dp"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <TextView
+            android:id="@+id/user_name"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="#fece2f"
-            android:padding="20dp">
-
-            <ImageView
-                android:id="@+id/profile"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/person_icon" />
-
-            <TextView
-                android:id="@+id/full_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/profile"
-                android:fontFamily="sans-serif-black"
-                android:includeFontPadding="false"
-                android:text="Akash Sangnure"
-                android:textColor="@color/black"
-                android:textSize="25dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/full_name"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/profile"
-                android:fontFamily="sans-serif-black"
-                android:includeFontPadding="false"
-                android:text="Sky_sangnure"
-                android:textColor="@color/black"
-                android:textSize="15dp" />
-        </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textColor="@color/black"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-90dp"
-            android:padding="20dp">
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="125dp"
-                android:layout_margin="10dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#fece2f"
-                android:elevation="40dp">
+                android:gravity="start"
+                android:orientation="vertical">
 
-                <RelativeLayout
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Balance"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:id="@+id/current_bal_in_profile_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="5dp">
+                    android:textColor="@color/black"
+                    android:textSize="22sp"/>
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/ic_baseline_attach_money" />
-
-                    <TextView
-                        android:id="@+id/balance"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="sans-serif-black"
-                        android:includeFontPadding="false"
-                        android:text="12345"
-                        android:textSize="20dp" />
-
-                    <TextView
-                        android:id="@+id/balance_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/balance"
-                        android:layout_centerHorizontal="true"
-                        android:fontFamily="sans-serif-black"
-                        android:includeFontPadding="false"
-                        android:text="Deposit"
-                        android:textSize="20dp" />
-                </RelativeLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="125dp"
-                android:layout_margin="10dp"
+            </LinearLayout>
+            <View
+                android:layout_width="0.5dp"
+                android:layout_marginEnd="40dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#fece2f"
-                android:elevation="40dp">
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
-                <RelativeLayout
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Invested"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:id="@+id/invested_bal_in_profile_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="5dp">
+                    android:textColor="@color/black"
+                    android:textSize="22sp"/>
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/ic_baseline_attach_money" />
-
-                    <TextView
-                        android:id="@+id/balance2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="sans-serif-black"
-                        android:includeFontPadding="false"
-                        android:text="12345"
-                        android:textSize="20dp" />
-
-                    <TextView
-                        android:id="@+id/balance_label2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/balance2"
-                        android:layout_centerHorizontal="true"
-                        android:fontFamily="sans-serif-black"
-                        android:includeFontPadding="false"
-                        android:text="Balance"
-                        android:textSize="20dp" />
-                </RelativeLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="125dp"
-                android:layout_margin="10dp"
+            </LinearLayout>
+            <View
+                android:layout_width="0.5dp"
+                android:layout_marginEnd="40dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#fece2f"
-                android:elevation="40dp">
+                android:orientation="vertical">
 
-                <RelativeLayout
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Profit"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:id="@+id/profit_bal_in_profile_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="5dp">
+                    android:textColor="@color/black"
+                    android:textSize="22sp"/>
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/ic_baseline_attach_money" />
-
-                    <TextView
-                        android:id="@+id/balance3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="sans-serif-black"
-                        android:includeFontPadding="false"
-                        android:text="12345"
-                        android:textSize="20dp" />
-
-                    <TextView
-                        android:id="@+id/balance_label3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/balance3"
-                        android:layout_centerHorizontal="true"
-                        android:fontFamily="sans-serif-black"
-                        android:includeFontPadding="false"
-                        android:text="Profit"
-                        android:textSize="20dp" />
-                </RelativeLayout>
-
-            </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
         </LinearLayout>
 
 
     </LinearLayout>
 
-</ScrollView>
+</FrameLayout>

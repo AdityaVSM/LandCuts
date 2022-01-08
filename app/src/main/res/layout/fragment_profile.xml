@@ -173,7 +173,7 @@
                         android:textSize="20dp" />
 
                     <TextView
-                        android:id="@+id/balance_label"
+                        android:id="@+id/balance_label3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/balance3"

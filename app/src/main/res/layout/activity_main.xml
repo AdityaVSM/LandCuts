@@ -5,14 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_centerInParent="true"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@color/black">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Land Cuts"
         android:textSize="50sp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/white"
+        android:fontFamily="cursive"/>
 
     <ImageView
         android:layout_width="300dp"
@@ -24,7 +26,8 @@
         android:layout_height="wrap_content"
         android:text="Trade land shares"
         android:textSize="30sp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/white"
+        android:fontFamily="cursive"/>
 
 
 </LinearLayout>

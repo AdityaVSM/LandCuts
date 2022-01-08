@@ -3,20 +3,17 @@ package com.example.landcuts.Fragments;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.landcuts.Adapters.LandViewAdapter;
 import com.example.landcuts.Constants.Constants;
 import com.example.landcuts.Models.Land;
-import com.example.landcuts.Models.User;
 import com.example.landcuts.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -73,7 +70,8 @@ public class HomeFragment extends Fragment {
 //        databaseReference = database.getReference().child("land").child("6");
 //        databaseReference.setValue(new Land("Land6","California",42000));
         set_land_view(landViewAdapter,database.getReference().child("land"));
-        set_current_worth(auth,database.getReference().child("user"));
+        if(auth.getCurrentUser()!=null)
+            set_current_worth(auth, database.getReference().child("user"));
 
 
         return view;
@@ -96,6 +94,7 @@ public class HomeFragment extends Fragment {
                     else
                         currentPrice = 0;
                     Land land = new Land(name,location,initialPrice);
+                    land.setCurrentPrice(currentPrice);
                     if(data_snapshot.child("no_of_available_cuts").getValue()!=null)
                         land.setNo_of_available_cuts(((Long)data_snapshot.child("no_of_available_cuts").getValue()).intValue());
                     else
@@ -116,16 +115,15 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    public long set_current_worth(FirebaseAuth auth, DatabaseReference databaseReference){
+    public void set_current_worth(FirebaseAuth auth, DatabaseReference databaseReference){
         final long[] current_worth = {0};
-//        databaseReference = database.getReference().child("user");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     if(dataSnapshot.child("uid").getValue().toString().equals(auth.getCurrentUser().getUid())){
                         current_worth[0] = (long) dataSnapshot.child("currentBalance").getValue();
-                        current_worth_view.setText(("₹"+String.valueOf(current_worth[0]).toString()));
+                        current_worth_view.setText((Constants.rupee_symbol+String.valueOf(current_worth[0]).toString()));
                         System.out.println(current_worth[0]);
                     }
                 }
@@ -136,7 +134,6 @@ public class HomeFragment extends Fragment {
 
             }
         });
-        return current_worth[0];
     }
 
 

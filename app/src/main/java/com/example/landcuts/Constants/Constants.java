@@ -6,11 +6,8 @@ import java.util.ArrayList;
 
 public class Constants {
 
-    public static ArrayList<Land> addLandData(){
-        ArrayList<Land> lands_arrayList = new ArrayList<>();
-
-        return lands_arrayList;
-    }
+    public static String rupee_symbol = "₹";
+    public static String percent_symbol = "%";
 
 
 }

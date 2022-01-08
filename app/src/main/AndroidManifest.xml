@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LandCuts">
-        <activity android:name=".Utils.EachLandActivity"></activity>
+        <activity android:name=".EachLandActivity"></activity>
         <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".HomeActivity" />

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,7 @@ import com.example.landcuts.Adapters.LandViewAdapter;
 import com.example.landcuts.Constants.Constants;
 import com.example.landcuts.Models.Land;
 import com.example.landcuts.R;
-import com.example.landcuts.Utils.EachLandActivity;
+import com.example.landcuts.EachLandActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

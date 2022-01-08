@@ -1,4 +1,4 @@
-package com.example.landcuts.Utils;
+package com.example.landcuts;
 
 import androidx.appcompat.app.AppCompatActivity;
 

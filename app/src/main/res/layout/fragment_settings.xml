@@ -75,7 +75,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_baseline_person_24"
+                android:drawableLeft="@drawable/ic_baseline_phone_24"
                 android:drawablePadding="10dp"
                 android:text="9353532976"
                 android:textColor="@color/black"/>
@@ -90,7 +90,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_baseline_person_24"
+                android:drawableLeft="@drawable/ic_baseline_lock_24"
                 android:drawablePadding="10dp"
                 android:text="akash_sangnure"
                 android:textColor="@color/black"/>

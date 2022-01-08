@@ -1,5 +1,6 @@
 package com.example.landcuts.Fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.landcuts.Constants.Constants;
 import com.example.landcuts.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -25,7 +27,7 @@ import java.util.List;
 
 public class ProfileFragment extends Fragment {
 
-    TextView user_name, no_of_available_cuts_view;
+    TextView user_name, profit_bal_in_profile_fragment, invested_bal_in_profile_fragment, current_bal_in_profile_fragment;
     FirebaseAuth auth;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -37,34 +39,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_profile, container, false);
 
-        user_name = view.findViewById(R.id.user_name);
-        auth = FirebaseAuth.getInstance();
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("user");
 
-        getData();
         return view;
-    }
-
-    public void getData(){
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String name = "";
-                String email = "";
-                for(DataSnapshot data: snapshot.getChildren()){
-                    if(data.child("uid").getValue().toString().equals(auth.getCurrentUser().getUid())) {
-                        name = data.child("name").getValue().toString();
-                        email = data.child("email").getValue().toString();
-                    }
-                }
-                user_name.setText(email);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getContext(), "Unable to retrieve data", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 }

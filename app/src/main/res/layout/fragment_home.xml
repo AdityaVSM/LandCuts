@@ -12,14 +12,6 @@
         android:layout_gravity="center_horizontal"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Land Cuts"
-            android:background="#0BED16"
-            android:gravity="center"
-            android:textColor="#FF0000"
-            android:textSize="50sp"/>
 
         <LinearLayout
             android:layout_width="match_parent"

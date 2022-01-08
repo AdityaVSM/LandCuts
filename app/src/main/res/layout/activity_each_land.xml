@@ -74,10 +74,10 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/land_image_view"
         android:layout_width="match_parent"
         android:layout_margin="20dp"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/arizona"
         android:layout_height="200dp"/>
 
     <TextView

@@ -9,6 +9,7 @@ public class Land implements Serializable {
     long initialPrice;
     long currentPrice;
     int no_of_available_cuts;
+    String imageUri;
     ArrayList<User> users_who_bought_current_land;
 
     public Land(String name, String location, long initialPrice) {
@@ -66,5 +67,13 @@ public class Land implements Serializable {
 
     public void setUsers_who_bought_current_land(ArrayList<User> users_who_bought_current_land) {
         this.users_who_bought_current_land = users_who_bought_current_land;
+    }
+
+    public String getImageUri() {
+        return imageUri;
+    }
+
+    public void setImageUri(String imageUri) {
+        this.imageUri = imageUri;
     }
 }

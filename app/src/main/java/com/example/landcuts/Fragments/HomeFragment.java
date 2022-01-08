@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.landcuts.Adapters.LandViewAdapter;
+import com.example.landcuts.Constants.Constants;
 import com.example.landcuts.Models.Land;
 import com.example.landcuts.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -122,7 +123,7 @@ public class HomeFragment extends Fragment {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     if(dataSnapshot.child("uid").getValue().toString().equals(auth.getCurrentUser().getUid())){
                         current_worth[0] = (long) dataSnapshot.child("currentBalance").getValue();
-                        current_worth_view.setText(("₹"+String.valueOf(current_worth[0]).toString()));
+                        current_worth_view.setText((Constants.rupee_symbol+String.valueOf(current_worth[0]).toString()));
                         System.out.println(current_worth[0]);
                     }
                 }

@@ -1,9 +1,10 @@
 package com.example.landcuts.Models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Land {
+public class Land implements Serializable {
     String name, location;
     long initialPrice;
     long currentPrice;

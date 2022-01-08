@@ -11,11 +11,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-<<<<<<<<< Temporary merge branch 1
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="15dp"
-=========
->>>>>>>>> Temporary merge branch 2
         android:orientation="vertical">
 
         <RelativeLayout
@@ -32,7 +27,7 @@
                 android:src="@drawable/person_icon" />
 
             <TextView
-                android:id="@+id/full_name"
+                android:id="@+id/user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -44,26 +39,11 @@
                 android:textColor="@color/black"
                 android:textSize="25dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/full_name"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/profile"
-                android:fontFamily="sans-serif-black"
-                android:includeFontPadding="false"
-                android:text="Sky_sangnure"
-                android:textColor="@color/black"
-                android:textSize="15dp" />
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-<<<<<<<<< Temporary merge branch 1
-            android:textSize="30sp"
-            android:textColor="@color/black"/>
-=========
             android:layout_marginTop="-90dp"
             android:padding="20dp">
 
@@ -87,24 +67,22 @@
                         android:src="@drawable/ic_baseline_attach_money" />
 
                     <TextView
-                        android:id="@+id/balance"
+                        android:id="@+id/invested_bal_in_profile_fragment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:fontFamily="sans-serif-black"
                         android:includeFontPadding="false"
-                        android:text="12345"
                         android:textSize="20dp" />
 
                     <TextView
-                        android:id="@+id/balance_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/balance"
+                        android:layout_below="@+id/invested_bal_in_profile_fragment"
                         android:layout_centerHorizontal="true"
                         android:fontFamily="sans-serif-black"
                         android:includeFontPadding="false"
-                        android:text="Deposit"
+                        android:text="Invested"
                         android:textSize="20dp" />
                 </RelativeLayout>
 
@@ -130,20 +108,18 @@
                         android:src="@drawable/ic_baseline_attach_money" />
 
                     <TextView
-                        android:id="@+id/balance2"
+                        android:id="@+id/current_bal_in_profile_fragment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:fontFamily="sans-serif-black"
                         android:includeFontPadding="false"
-                        android:text="12345"
                         android:textSize="20dp" />
 
                     <TextView
-                        android:id="@+id/balance_label2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/balance2"
+                        android:layout_below="@+id/current_bal_in_profile_fragment"
                         android:layout_centerHorizontal="true"
                         android:fontFamily="sans-serif-black"
                         android:includeFontPadding="false"
@@ -172,20 +148,18 @@
                         android:src="@drawable/ic_baseline_attach_money" />
 
                     <TextView
-                        android:id="@+id/balance3"
+                        android:id="@+id/profit_bal_in_profile_fragment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:fontFamily="sans-serif-black"
                         android:includeFontPadding="false"
-                        android:text="12345"
                         android:textSize="20dp" />
 
                     <TextView
-                        android:id="@+id/balance_label3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/balance3"
+                        android:layout_below="@+id/profit_bal_in_profile_fragment"
                         android:layout_centerHorizontal="true"
                         android:fontFamily="sans-serif-black"
                         android:includeFontPadding="false"
@@ -195,85 +169,6 @@
 
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
->>>>>>>>> Temporary merge branch 2
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="start"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Balance"
-                    android:textSize="15sp"/>
-                <TextView
-                    android:id="@+id/current_bal_in_profile_fragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textColor="@color/black"
-                    android:textSize="22sp"/>
-
-            </LinearLayout>
-            <View
-                android:layout_width="0.5dp"
-                android:layout_marginEnd="40dp"
-                android:layout_height="match_parent"
-                android:background="@color/black"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Invested"
-                    android:textSize="15sp"/>
-                <TextView
-                    android:id="@+id/invested_bal_in_profile_fragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textColor="@color/black"
-                    android:textSize="22sp"/>
-
-            </LinearLayout>
-            <View
-                android:layout_width="0.5dp"
-                android:layout_marginEnd="40dp"
-                android:layout_height="match_parent"
-                android:background="@color/black"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Profit"
-                    android:textSize="15sp"/>
-                <TextView
-                    android:id="@+id/profit_bal_in_profile_fragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textColor="@color/black"
-                    android:textSize="22sp"/>
-
-            </LinearLayout>
-        </LinearLayout>
-
 
     </LinearLayout>
 

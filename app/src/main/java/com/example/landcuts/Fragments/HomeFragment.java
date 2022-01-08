@@ -1,5 +1,6 @@
 package com.example.landcuts.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -15,6 +17,7 @@ import com.example.landcuts.Adapters.LandViewAdapter;
 import com.example.landcuts.Constants.Constants;
 import com.example.landcuts.Models.Land;
 import com.example.landcuts.R;
+import com.example.landcuts.EachLandActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -72,6 +75,17 @@ public class HomeFragment extends Fragment {
         set_land_view(landViewAdapter,database.getReference().child("land"));
         if(auth.getCurrentUser()!=null)
             set_current_worth(auth, database.getReference().child("user"));
+
+        diff_land_list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Land land = (Land) parent.getItemAtPosition(position);
+                Intent intent = new Intent(getActivity().getApplicationContext(), EachLandActivity.class);
+                intent.putExtra("land", land);
+                startActivity(intent);
+//                System.out.println(land.getName());
+            }
+        });
 
 
         return view;

@@ -36,7 +36,6 @@
                 android:layout_toRightOf="@+id/profile"
                 android:fontFamily="sans-serif-black"
                 android:includeFontPadding="false"
-                android:text="Akash Sangnure"
                 android:textColor="@color/black"
                 android:textSize="25dp" />
 

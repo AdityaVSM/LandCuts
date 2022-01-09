@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.landcuts.Constants.Constants;
 import com.example.landcuts.Models.Land;
@@ -70,11 +71,39 @@ public class EachLandActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //new intent for buying page
-                if(auth!=null) {
-                    databaseReference = database.getReference().child("land").child(String.valueOf(land.getId()));
-                    databaseReference.child("users_who_bought_current_land").child(String.valueOf(owners.size()+1)).child("bought_by").setValue(auth.getCurrentUser().getUid().toString());
-                    databaseReference.child("users_who_bought_current_land").child(String.valueOf(owners.size()+1)).child("initial_buy_price").setValue(land.getCurrentPrice());
-                    databaseReference.child("users_who_bought_current_land").child(String.valueOf(owners.size()+1)).child("no_of_shares").setValue(10);
+                if(auth.getCurrentUser()!=null) {
+                    int no_of_shares = 0;
+                    databaseReference = database.getReference().child("land").child(String.valueOf(land.getId())).child("users_who_bought_current_land");
+                    boolean exists = false;
+                    Transaction currentOwner = null;
+                    for (Transaction owner : owners){
+                        if(owner.getBoughtBy().equals(auth.getCurrentUser().getUid())){
+                            exists = true;
+                            currentOwner = owner;
+                            no_of_shares = owner.getNo_of_shares_bought();
+                            break;
+                        }
+                    }
+                    if (land.getNo_of_available_cuts()==0) {
+                        Toast.makeText(EachLandActivity.this, "All shares are sold", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        if(exists){
+                            no_of_shares+=1;
+                            land.setNo_of_available_cuts(land.getNo_of_available_cuts()-1);
+                            database.getReference().child("land").child(String.valueOf(land.getId())).child("no_of_available_cuts").setValue(land.getNo_of_available_cuts());
+                            currentOwner.setNo_of_shares_bought(currentOwner.getNo_of_shares_bought()+1);
+                            int index = owners.indexOf(currentOwner)+1;
+                            databaseReference  = databaseReference.child(String.valueOf(index));
+                            databaseReference.child("no_of_shares").setValue(no_of_shares);
+                        }else{
+                            databaseReference.child(String.valueOf(owners.size()+1)).child("bought_by").setValue(auth.getCurrentUser().getUid().toString());
+                            databaseReference.child(String.valueOf(owners.size()+1)).child("initial_buy_price").setValue(land.getInitialPrice());
+                            databaseReference.child(String.valueOf(owners.size()+1)).child("no_of_shares").setValue(no_of_shares);
+                        }
+                    }
+
+
                 }
             }
         });

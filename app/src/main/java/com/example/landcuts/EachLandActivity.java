@@ -77,13 +77,11 @@ public class EachLandActivity extends AppCompatActivity {
                                 if (land.getNo_of_available_cuts() == 0) {
                                     Toast.makeText(EachLandActivity.this, "All shares are sold", Toast.LENGTH_SHORT).show();
                                 } else {
+                                    Transaction currentOwner = new Transaction(auth.getCurrentUser().getUid());
                                     if (auth.getCurrentUser() != null) {
-                                        Transaction currentOwner = null;
                                         if (owners.size() != 0) {
-                                            boolean exists = false;
                                             for (Transaction owner : owners) {
                                                 if (owner.getBoughtBy().equals(auth.getCurrentUser().getUid())) {
-                                                    exists = true;
                                                     currentOwner = owner;
                                                     no_of_shares = owner.getNo_of_shares_bought();
                                                     break;
@@ -92,12 +90,12 @@ public class EachLandActivity extends AppCompatActivity {
                                             no_of_shares += 1;
                                             land.setNo_of_available_cuts(land.getNo_of_available_cuts() - 1);
                                             database.getReference().child("land").child(String.valueOf(land.getId())).child("no_of_available_cuts").setValue(land.getNo_of_available_cuts());
+
                                             currentOwner.setNo_of_shares_bought(currentOwner.getNo_of_shares_bought() + 1);
                                             int index = owners.indexOf(currentOwner) + 1;
                                             databaseReference = databaseReference.child(String.valueOf(index));
                                             databaseReference.child("no_of_shares").setValue(no_of_shares);
                                         } else {
-                                            currentOwner = new Transaction(auth.getCurrentUser().getUid());
                                             land.setNo_of_available_cuts(land.getNo_of_available_cuts() - 1);
                                             currentOwner.setNo_of_shares_bought(currentOwner.getNo_of_shares_bought() + 1);
                                             currentOwner.setinitial_buy_price(land.getCurrentPrice());
@@ -106,6 +104,7 @@ public class EachLandActivity extends AppCompatActivity {
                                             databaseReference.child(String.valueOf(owners.size() + 1)).child("bought_by").setValue(auth.getCurrentUser().getUid().toString());
                                             databaseReference.child(String.valueOf(owners.size() + 1)).child("initial_buy_price").setValue(land.getInitialPrice());
                                             databaseReference.child(String.valueOf(owners.size() + 1)).child("no_of_shares").setValue(no_of_shares);
+                                            owners.add(currentOwner);
                                         }
 
                                         current_available_land_parts.setText((String.valueOf(land.getNo_of_available_cuts()) + "/100"));

@@ -8,7 +8,7 @@ public class Land implements Serializable {
     String name, location;
     long initialPrice;
     int id;
-    long currentPrice;
+    public static long currentPrice;
     int no_of_available_cuts;
     String imageUri;
     ArrayList<User> users_who_bought_current_land;

@@ -9,8 +9,10 @@ public class Transaction extends Land{
         super();
     }
 
-    public Transaction(String name, String location, long initialPrice) {
-        super(name, location, initialPrice);
+    public Transaction(String boughtBy) {
+        this.boughtBy = boughtBy;
+        this.initial_buy_price = Land.currentPrice;
+        this.no_of_shares_bought = 0;
     }
 
     public String getBoughtBy() {

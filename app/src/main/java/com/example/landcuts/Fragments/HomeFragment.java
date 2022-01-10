@@ -35,6 +35,7 @@ public class HomeFragment extends Fragment {
     ListView diff_land_list_view;
     LandViewAdapter landViewAdapter;
     TextView current_worth_view;
+    ArrayList<Land> arrayList;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -47,11 +48,11 @@ public class HomeFragment extends Fragment {
         diff_land_list_view= view.findViewById(R.id.diff_land_list_view);
         current_worth_view = view.findViewById(R.id.current_worth_view);
 
-        final ArrayList<Land> arrayList = new ArrayList<>();
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
 
 
+        arrayList = new ArrayList<>();
         landViewAdapter = new LandViewAdapter(getActivity().getApplicationContext(), arrayList);
         diff_land_list_view.setAdapter(landViewAdapter);
 
@@ -95,6 +96,7 @@ public class HomeFragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                arrayList.clear();
                 for(DataSnapshot data_snapshot : snapshot.getChildren()){
                     String name = data_snapshot.child("name").getValue().toString();
                     String location = data_snapshot.child("location").getValue().toString();
@@ -118,9 +120,10 @@ public class HomeFragment extends Fragment {
                     else
                         land.setCurrentPrice(initialPrice);
                     land.setId(((Long)data_snapshot.child("id").getValue()).intValue());
-                    landViewAdapter.add(land);
+                    arrayList.add(land);
                     landViewAdapter.notifyDataSetChanged();
                 }
+
             }
 
             @Override

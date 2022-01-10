@@ -96,7 +96,7 @@ public class HomeFragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                arrayList.clear();
+                landViewAdapter.clear();
                 for(DataSnapshot data_snapshot : snapshot.getChildren()){
                     String name = data_snapshot.child("name").getValue().toString();
                     String location = data_snapshot.child("location").getValue().toString();
@@ -120,7 +120,7 @@ public class HomeFragment extends Fragment {
                     else
                         land.setCurrentPrice(initialPrice);
                     land.setId(((Long)data_snapshot.child("id").getValue()).intValue());
-                    arrayList.add(land);
+                    landViewAdapter.add(land);
                     landViewAdapter.notifyDataSetChanged();
                 }
 

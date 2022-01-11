@@ -11,7 +11,7 @@ public class Transaction extends Land{
 
     public Transaction(String boughtBy) {
         this.boughtBy = boughtBy;
-        this.initial_buy_price = Land.currentPrice;
+        this.initial_buy_price = super.currentPrice;
         this.no_of_shares_bought = 0;
     }
 

@@ -107,12 +107,15 @@ public class EachLandActivity extends AppCompatActivity {
                                             databaseReference.child(String.valueOf(owners.size() + 1)).child("no_of_shares").setValue(no_of_shares);
                                             owners.add(currentOwner);
                                         }
-//                                        land.setCurrentPrice(updateCurrentPrice(land,true));
 
                                         current_available_land_parts.setText((String.valueOf(land.getNo_of_available_cuts()) + "/100"));
                                         total_cuts_ofLand_bought_by_user.setText(String.valueOf(currentOwner.getNo_of_shares_bought()));
                                         total_price_ofShare_bought_by_user.setText((Constants.rupee_symbol + String.valueOf(land.getCurrentPrice() * currentOwner.getNo_of_shares_bought())));
 
+                                        land.setCurrentPrice(updateCurrentPrice(land,true));
+                                        database.getReference().child("land").child(String.valueOf(land.getId())).child("currentPrice").setValue(land.getCurrentPrice());
+                                        total_price_ofShare_bought_by_user.setText((Constants.rupee_symbol + String.valueOf(land.getCurrentPrice() * currentOwner.getNo_of_shares_bought())));
+                                        current_land_share_price.setText((Constants.rupee_symbol + String.valueOf(land.getCurrentPrice())));
                                     }
                                 }
                             }
@@ -169,6 +172,11 @@ public class EachLandActivity extends AppCompatActivity {
                                         current_available_land_parts.setText((String.valueOf(land.getNo_of_available_cuts())+"/100"));
                                         total_cuts_ofLand_bought_by_user.setText(String.valueOf(currentOwner.getNo_of_shares_bought()));
                                         total_price_ofShare_bought_by_user.setText((Constants.rupee_symbol+String.valueOf(land.getCurrentPrice()*currentOwner.getNo_of_shares_bought())));
+
+                                        land.setCurrentPrice(updateCurrentPrice(land,false));
+                                        database.getReference().child("land").child(String.valueOf(land.getId())).child("currentPrice").setValue(land.getCurrentPrice());
+                                        total_price_ofShare_bought_by_user.setText((Constants.rupee_symbol + String.valueOf(land.getCurrentPrice() * currentOwner.getNo_of_shares_bought())));
+                                        current_land_share_price.setText((Constants.rupee_symbol + String.valueOf(land.getCurrentPrice())));
                                     }
                                 }
                             }).setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -204,10 +212,10 @@ public class EachLandActivity extends AppCompatActivity {
         long currentPrice = land.getCurrentPrice();
         if(bought){
             //increment amount by 1%
-            currentPrice += 0.1*currentPrice;
+            currentPrice += 1;
         }else{
             //decrement amount by 1%
-            currentPrice -= 0.1*currentPrice;
+            currentPrice -= 1;
         }
         return currentPrice;
     }

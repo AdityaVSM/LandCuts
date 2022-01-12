@@ -108,6 +108,7 @@ public class EachLandActivity extends AppCompatActivity {
                                             owners.add(currentOwner);
                                         }
 
+
                                         current_available_land_parts.setText((String.valueOf(land.getNo_of_available_cuts()) + "/100"));
                                         total_cuts_ofLand_bought_by_user.setText(String.valueOf(currentOwner.getNo_of_shares_bought()));
                                         total_price_ofShare_bought_by_user.setText((Constants.rupee_symbol + String.valueOf(land.getCurrentPrice() * currentOwner.getNo_of_shares_bought())));

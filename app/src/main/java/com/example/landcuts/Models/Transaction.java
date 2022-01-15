@@ -2,7 +2,7 @@ package com.example.landcuts.Models;
 
 public class Transaction extends Land{
     String boughtBy;
-    long initial_buy_price;
+    long total_invested;
     int no_of_shares_bought;
 
     public Transaction(){
@@ -11,7 +11,7 @@ public class Transaction extends Land{
 
     public Transaction(String boughtBy) {
         this.boughtBy = boughtBy;
-        this.initial_buy_price = super.currentPrice;
+        this.total_invested = super.currentPrice;
         this.no_of_shares_bought = 0;
     }
 
@@ -23,12 +23,12 @@ public class Transaction extends Land{
         this.boughtBy = boughtBy;
     }
 
-    public long getinitial_buy_price() {
-        return initial_buy_price;
+    public long gettotal_invested() {
+        return total_invested;
     }
 
-    public void setinitial_buy_price(long initial_buy_price) {
-        this.initial_buy_price = initial_buy_price;
+    public void settotal_invested(long total_invested) {
+        this.total_invested = total_invested;
     }
 
     public int getNo_of_shares_bought() {

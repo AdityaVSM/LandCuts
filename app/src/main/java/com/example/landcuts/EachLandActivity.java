@@ -100,6 +100,7 @@ public class EachLandActivity extends AppCompatActivity {
                                             currentOwner.setNo_of_shares_bought(currentOwner.getNo_of_shares_bought() + 1);
                                             currentOwner.setinitial_buy_price(land.getCurrentPrice());
 
+
                                             database.getReference().child("land").child(String.valueOf(land.getId())).child("no_of_available_cuts").setValue(land.getNo_of_available_cuts());
                                             databaseReference.child(String.valueOf(owners.size() + 1)).child("bought_by").setValue(auth.getCurrentUser().getUid().toString());
                                             databaseReference.child(String.valueOf(owners.size() + 1)).child("initial_buy_price").setValue(land.getInitialPrice());
@@ -107,9 +108,15 @@ public class EachLandActivity extends AppCompatActivity {
                                             owners.add(currentOwner);
                                         }
 
+
                                         current_available_land_parts.setText((String.valueOf(land.getNo_of_available_cuts()) + "/100"));
                                         total_cuts_ofLand_bought_by_user.setText(String.valueOf(currentOwner.getNo_of_shares_bought()));
                                         total_price_ofShare_bought_by_user.setText((Constants.rupee_symbol + String.valueOf(land.getCurrentPrice() * currentOwner.getNo_of_shares_bought())));
+
+                                        land.setCurrentPrice(updateCurrentPrice(land,true));
+                                        database.getReference().child("land").child(String.valueOf(land.getId())).child("currentPrice").setValue(land.getCurrentPrice());
+                                        total_price_ofShare_bought_by_user.setText((Constants.rupee_symbol + String.valueOf(land.getCurrentPrice() * currentOwner.getNo_of_shares_bought())));
+                                        current_land_share_price.setText((Constants.rupee_symbol + String.valueOf(land.getCurrentPrice())));
                                     }
                                 }
                             }
@@ -166,6 +173,11 @@ public class EachLandActivity extends AppCompatActivity {
                                         current_available_land_parts.setText((String.valueOf(land.getNo_of_available_cuts())+"/100"));
                                         total_cuts_ofLand_bought_by_user.setText(String.valueOf(currentOwner.getNo_of_shares_bought()));
                                         total_price_ofShare_bought_by_user.setText((Constants.rupee_symbol+String.valueOf(land.getCurrentPrice()*currentOwner.getNo_of_shares_bought())));
+
+                                        land.setCurrentPrice(updateCurrentPrice(land,false));
+                                        database.getReference().child("land").child(String.valueOf(land.getId())).child("currentPrice").setValue(land.getCurrentPrice());
+                                        total_price_ofShare_bought_by_user.setText((Constants.rupee_symbol + String.valueOf(land.getCurrentPrice() * currentOwner.getNo_of_shares_bought())));
+                                        current_land_share_price.setText((Constants.rupee_symbol + String.valueOf(land.getCurrentPrice())));
                                     }
                                 }
                             }).setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -197,13 +209,25 @@ public class EachLandActivity extends AppCompatActivity {
         });
     }
 
+    public long updateCurrentPrice(Land land, boolean bought){
+        long currentPrice = land.getCurrentPrice();
+        if(bought){
+            //increment amount by 1%
+            currentPrice += 1;
+        }else{
+            //decrement amount by 1%
+            currentPrice -= 1;
+        }
+        return currentPrice;
+    }
+
     public ArrayList<Transaction> getOwnersOfLand(Land land){
         ArrayList<Transaction> owners = new ArrayList<>();
         databaseReference = database.getReference().child("land").child(String.valueOf(land.getId()));
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()) {
+                if(snapshot.child("users_who_bought_current_land").exists()) {
                     for (DataSnapshot dataSnapshot : snapshot.child("users_who_bought_current_land").getChildren()) {
                         Transaction individual_owner = new Transaction();
                         individual_owner.setBoughtBy(dataSnapshot.child("bought_by").getValue().toString());

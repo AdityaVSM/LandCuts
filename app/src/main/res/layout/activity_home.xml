@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_navigation_menu"
-        android:background="#fece2f"/>
+        android:background="#808000"
+        app:menu="@menu/bottom_navigation_menu" />
 
 </RelativeLayout>

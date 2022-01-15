@@ -2,10 +2,6 @@ package com.example.landcuts;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-
-import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
-import com.smarteist.autoimageslider.SliderAnimations;
-import com.smarteist.autoimageslider.SliderView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 
@@ -28,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
       
 
-//        top_anim = AnimationUtils.loadAnimation(this,R.animator.top_animation);
-//        bottom_anim = AnimationUtils.loadAnimation(this,R.animator.bottom_animation);
+        top_anim = AnimationUtils.loadAnimation(this,R.animator.top_animation);
+        bottom_anim = AnimationUtils.loadAnimation(this,R.animator.bottom_animation);
 
         txt_anim = findViewById(R.id.text_anim);
         txt_anim2 = findViewById(R.id.text_anim2);

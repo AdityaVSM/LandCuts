@@ -28,7 +28,7 @@ import java.util.ArrayList;
 public class EachLandActivity extends AppCompatActivity {
 
     TextView current_available_land_parts, current_land_share_price,land_name, land_location,
-            total_price_ofShare_bought_by_user, total_cuts_ofLand_bought_by_user, show_your_acquirings;
+            total_price_ofShare_bought_by_user, total_cuts_ofLand_bought_by_user, show_your_acquirings, total_invested_by_user;
     ImageView land_image_view;
     Button buy_button, sell_button;
     FirebaseAuth auth;
@@ -55,6 +55,7 @@ public class EachLandActivity extends AppCompatActivity {
         land_image_view = findViewById(R.id.land_image_view);
         buy_button = findViewById(R.id.buy_button);
         sell_button = findViewById(R.id.sell_button);
+        total_invested_by_user = findViewById(R.id.total_invested_by_user);
 
         Intent intent = getIntent();
         Land land = (Land) intent.getSerializableExtra("land");
@@ -121,6 +122,7 @@ public class EachLandActivity extends AppCompatActivity {
                                         database.getReference().child("land").child(String.valueOf(land.getId())).child("currentPrice").setValue(land.getCurrentPrice());
                                         total_price_ofShare_bought_by_user.setText((Constants.rupee_symbol + String.valueOf(land.getCurrentPrice() * currentOwner.getNo_of_shares_bought())));
                                         current_land_share_price.setText((Constants.rupee_symbol + String.valueOf(land.getCurrentPrice())));
+                                        total_invested_by_user.setText((Constants.rupee_symbol + String.valueOf(currentOwner.gettotal_invested())));
                                     }
                                 }
                             }
@@ -180,8 +182,14 @@ public class EachLandActivity extends AppCompatActivity {
 
                                         land.setCurrentPrice(updateCurrentPrice(land,false));
                                         database.getReference().child("land").child(String.valueOf(land.getId())).child("currentPrice").setValue(land.getCurrentPrice());
+
+                                        currentOwner.settotal_invested(currentOwner.gettotal_invested()-land.getCurrentPrice());
+                                        database.getReference().child("land").child(String.valueOf(land.getId())).child("users_who_bought_current_land").child(String.valueOf(owners.indexOf(currentOwner)+1)).child("total_invested").setValue(currentOwner.gettotal_invested());
+
                                         total_price_ofShare_bought_by_user.setText((Constants.rupee_symbol + String.valueOf(land.getCurrentPrice() * currentOwner.getNo_of_shares_bought())));
                                         current_land_share_price.setText((Constants.rupee_symbol + String.valueOf(land.getCurrentPrice())));
+                                        total_invested_by_user.setText((Constants.rupee_symbol + String.valueOf(currentOwner.gettotal_invested())));
+
                                     }
                                 }
                             }).setNegativeButton("No", new DialogInterface.OnClickListener() {

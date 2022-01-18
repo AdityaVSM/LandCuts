@@ -148,9 +148,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
             android:text="Buy"
-            android:padding="10dp"
             android:textSize="20sp"
             android:id="@+id/buy_button"/>
         <View
@@ -161,8 +159,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20sp"
-            android:padding="10dp"
-            android:gravity="center_horizontal"
             android:text="Sell"
             android:id="@+id/sell_button"/>
     </LinearLayout>

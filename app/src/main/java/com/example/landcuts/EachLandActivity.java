@@ -85,11 +85,13 @@ public class EachLandActivity extends AppCompatActivity {
                                     Transaction currentOwner = new Transaction(auth.getCurrentUser().getUid(),owners.size()+1);
 
                                     if (auth.getCurrentUser() != null) {
+                                        boolean exists = false;
                                         if (owners.size() != 0) {
                                             for (Transaction owner : owners) {
                                                 if (owner.getBoughtBy().equals(auth.getCurrentUser().getUid())) {
                                                     currentOwner = owner;
                                                     no_of_shares = owner.getNo_of_shares_bought();
+                                                    exists = true;
                                                     break;
                                                 }
                                             }
@@ -111,6 +113,8 @@ public class EachLandActivity extends AppCompatActivity {
                                             long already_invested_whole = current_user.getInvested();
                                             current_user.setInvested(already_invested_whole+land.getCurrentPrice());
                                             database.getReference().child("user").child(auth.getCurrentUser().getUid()).child("invested").setValue(current_user.getInvested());
+
+
                                         } else {
                                             land.setNo_of_available_cuts(land.getNo_of_available_cuts() - 1);
                                             currentOwner.setNo_of_shares_bought(currentOwner.getNo_of_shares_bought() + 1);
@@ -137,6 +141,21 @@ public class EachLandActivity extends AppCompatActivity {
 
                                         land.setCurrentPrice(updateCurrentPrice(land,true));
                                         database.getReference().child("land").child(String.valueOf(land.getId())).child("currentPrice").setValue(land.getCurrentPrice());
+
+                                        //TODO debug this part (also add in sell part)
+                                        ArrayList<Transaction> newOwners = getOwnersOfLand(land);
+                                        long current_bal = 0;
+                                        for (Transaction transaction : newOwners) {
+                                            long each_curr_bal = transaction.getNo_of_shares_bought() * land.getCurrentPrice();
+                                            current_bal += each_curr_bal;
+                                        }
+                                        System.out.println(current_bal);
+                                        if(current_bal!=0)
+                                            current_user.setCurrentBalance(current_bal);
+                                        else
+                                            current_user.setCurrentBalance(current_user.getCurrentBalance()+land.getCurrentPrice());
+
+                                        database.getReference().child("user").child(auth.getCurrentUser().getUid()).child("currentBalance").setValue(current_user.getCurrentBalance());
 
 
                                         total_price_ofShare_bought_by_user.setText((Constants.rupee_symbol + String.valueOf(land.getCurrentPrice() * currentOwner.getNo_of_shares_bought())));
@@ -207,6 +226,10 @@ public class EachLandActivity extends AppCompatActivity {
 
                                         current_user.setInvested(current_user.getInvested()-land.getCurrentPrice());
                                         database.getReference().child("user").child(auth.getCurrentUser().getUid()).child("invested").setValue(current_user.getInvested());
+
+
+                                        current_user.setCurrentBalance(current_user.getCurrentBalance()-land.getCurrentPrice());
+                                        database.getReference().child("user").child(auth.getCurrentUser().getUid()).child("currentBalance").setValue(current_user.getCurrentBalance());
 
                                         total_price_ofShare_bought_by_user.setText((Constants.rupee_symbol + String.valueOf(land.getCurrentPrice() * currentOwner.getNo_of_shares_bought())));
                                         current_land_share_price.setText((Constants.rupee_symbol + String.valueOf(land.getCurrentPrice())));

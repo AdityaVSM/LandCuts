@@ -144,7 +144,6 @@ public class HomeFragment extends Fragment {
                     if(dataSnapshot.child("uid").getValue().toString().equals(auth.getCurrentUser().getUid())){
                         current_worth[0] = (long) dataSnapshot.child("currentBalance").getValue();
                         current_worth_view.setText((Constants.rupee_symbol+String.valueOf(current_worth[0]).toString()));
-                        System.out.println(current_worth[0]);
                     }
                 }
             }

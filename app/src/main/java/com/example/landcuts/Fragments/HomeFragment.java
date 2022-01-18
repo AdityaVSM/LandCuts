@@ -16,9 +16,11 @@ import android.widget.TextView;
 import com.example.landcuts.Adapters.LandViewAdapter;
 import com.example.landcuts.Constants.Constants;
 import com.example.landcuts.Models.Land;
+import com.example.landcuts.Models.User;
 import com.example.landcuts.R;
 import com.example.landcuts.EachLandActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -154,6 +156,8 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
+
 
 
 }

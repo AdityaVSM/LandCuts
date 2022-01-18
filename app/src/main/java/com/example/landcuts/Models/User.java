@@ -1,9 +1,14 @@
 package com.example.landcuts.Models;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class User {
+public class User implements Serializable {
     String name;
     String uid;
     String email;
@@ -70,4 +75,6 @@ public class User {
     public void setLand_bought_by_current_user(ArrayList<Land> land_bought_by_current_user) {
         this.land_bought_by_current_user = land_bought_by_current_user;
     }
+
+
 }

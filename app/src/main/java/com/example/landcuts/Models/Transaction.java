@@ -1,6 +1,7 @@
 package com.example.landcuts.Models;
 
 public class Transaction extends Land{
+    int id;
     String boughtBy;
     long total_invested;
     int no_of_shares_bought;
@@ -9,10 +10,11 @@ public class Transaction extends Land{
         super();
     }
 
-    public Transaction(String boughtBy) {
+    public Transaction(String boughtBy,int id) {
         this.boughtBy = boughtBy;
         this.total_invested = super.currentPrice;
         this.no_of_shares_bought = 0;
+        this.id = id;
     }
 
     public String getBoughtBy() {
@@ -33,6 +35,16 @@ public class Transaction extends Land{
 
     public int getNo_of_shares_bought() {
         return no_of_shares_bought;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setNo_of_shares_bought(int no_of_shares) {

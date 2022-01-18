@@ -120,6 +120,9 @@ public class EachLandActivity extends AppCompatActivity {
 
                                         land.setCurrentPrice(updateCurrentPrice(land,true));
                                         database.getReference().child("land").child(String.valueOf(land.getId())).child("currentPrice").setValue(land.getCurrentPrice());
+
+
+
                                         total_price_ofShare_bought_by_user.setText((Constants.rupee_symbol + String.valueOf(land.getCurrentPrice() * currentOwner.getNo_of_shares_bought())));
                                         current_land_share_price.setText((Constants.rupee_symbol + String.valueOf(land.getCurrentPrice())));
                                         total_invested_by_user.setText((Constants.rupee_symbol + String.valueOf(currentOwner.gettotal_invested())));

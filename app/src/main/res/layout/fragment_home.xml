@@ -24,13 +24,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:text="total_worth"/>
                 <TextView
                     android:id="@+id/current_worth_view"
                     android:layout_width="wrap_content"
                     android:textSize="35sp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:layout_margin="5dp"
                     android:layout_height="wrap_content"/>
 

@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +71,10 @@ public class ProfileFragment extends Fragment {
                 user_name.setText(name);
                 invested_bal_in_profile_fragment.setText((Constants.rupee_symbol +String.valueOf(invested)));
                 current_bal_in_profile_fragment.setText((Constants.rupee_symbol+String.valueOf(current_balance)));
-                profit_bal_in_profile_fragment.setText((String.valueOf(calculateProfit(current_balance, invested))+Constants.percent_symbol));
+                String profit = "0";
+                if((calculateProfit(current_balance, invested)!=null))
+                    profit = (calculateProfit(current_balance, invested));
+                profit_bal_in_profile_fragment.setText((profit+Constants.percent_symbol));
             }
 
             @Override
@@ -80,21 +84,22 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    public double calculateProfit(long current_balance, long invested){
+    public String calculateProfit(long current_balance, long invested){
         double profit_percentage = 0;
+        DecimalFormat df = new DecimalFormat("#.##");
         if(invested!=0){
             long profit = current_balance - invested;
             profit_percentage = ((double)Math.abs(profit)/(double) invested) * 100;
-
+            String profit_str = df.format(profit_percentage);
             if(profit>0) {
                 profit_bal_in_profile_fragment.setTextColor(Color.GREEN);
-                return profit_percentage;
+                return profit_str;
             }
             else {
                 profit_bal_in_profile_fragment.setTextColor(Color.RED);
-                return -profit_percentage;
+                return "-"+profit_str;
             }
         }
-        return 0;
+        return null;
     }
 }

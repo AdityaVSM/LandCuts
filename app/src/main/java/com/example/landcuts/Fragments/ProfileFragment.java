@@ -1,5 +1,6 @@
 package com.example.landcuts.Fragments;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -11,12 +12,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.landcuts.Adapters.LandViewAdapter;
 import com.example.landcuts.Constants.Constants;
+import com.example.landcuts.EachLandActivity;
 import com.example.landcuts.Models.Land;
 import com.example.landcuts.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -62,6 +65,18 @@ public class ProfileFragment extends Fragment {
 
         getBasicUserData();
         getLandBoughtByUser();
+
+        diff_land_list_view_bought_by_user.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Land land = (Land) parent.getItemAtPosition(position);
+                Intent intent = new Intent(getActivity().getApplicationContext(), EachLandActivity.class);
+                intent.putExtra("land", land);
+                startActivity(intent);
+//                System.out.println(land.getName());
+            }
+        });
+
         return view;
     }
 
@@ -101,7 +116,7 @@ public class ProfileFragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                landViewAdapter.clear();
+                landViewAdapter.clear();
                 for(DataSnapshot landSnapshot : snapshot.getChildren()){
                     if(landSnapshot.child("users_who_bought_current_land").exists()){
                         System.out.println("land is bought");

@@ -109,8 +109,14 @@ public class EachLandActivity extends AppCompatActivity {
                                                 land.setNo_of_available_cuts(land.getNo_of_available_cuts() - 1);
                                                 database.getReference().child("land").child(String.valueOf(land.getId())).child("no_of_available_cuts").setValue(land.getNo_of_available_cuts());
 
+                                                current_user.setInvested(land.getCurrentPrice());
+                                                database.getReference().child("user").child(auth.getCurrentUser().getUid()).child("invested").setValue(current_user.getInvested());
+
+                                                getCurrentBalanceOfCurrentUser(current_user,true,land);
+
                                                 owners.add(currentOwner);
-                                            }else {
+                                            }
+                                            else {
                                                 no_of_shares += 1;
                                                 land.setNo_of_available_cuts(land.getNo_of_available_cuts() - 1);
                                                 database.getReference().child("land").child(String.valueOf(land.getId())).child("no_of_available_cuts").setValue(land.getNo_of_available_cuts());
@@ -131,7 +137,8 @@ public class EachLandActivity extends AppCompatActivity {
                                                 database.getReference().child("user").child(auth.getCurrentUser().getUid()).child("invested").setValue(current_user.getInvested());
 
                                             }
-                                        } else {
+                                        }
+                                        else {
                                             land.setNo_of_available_cuts(land.getNo_of_available_cuts() - 1);
                                             currentOwner.setNo_of_shares_bought(currentOwner.getNo_of_shares_bought() + 1);
 
@@ -159,7 +166,6 @@ public class EachLandActivity extends AppCompatActivity {
                                         database.getReference().child("land").child(String.valueOf(land.getId())).child("currentPrice").setValue(land.getCurrentPrice());
 
 
-//                                        //TODO debug this part (also add in sell part) loop through all land
                                         getCurrentBalanceOfCurrentUser(current_user,true,land);
 //                                        current_user.setCurrentBalance(current_bal);
 ////                                        current_user.setCurrentBalance(current_user.getCurrentBalance()+(land.getCurrentPrice()*currentOwner.getNo_of_shares_bought()));

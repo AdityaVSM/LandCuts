@@ -73,7 +73,6 @@ public class ProfileFragment extends Fragment {
                 Intent intent = new Intent(getActivity().getApplicationContext(), EachLandActivity.class);
                 intent.putExtra("land", land);
                 startActivity(intent);
-//                System.out.println(land.getName());
             }
         });
 

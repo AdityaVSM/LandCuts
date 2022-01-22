@@ -1,5 +1,6 @@
 package com.example.landcuts.Fragments;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -9,11 +10,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.landcuts.LoginActivity;
 import com.example.landcuts.R;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -54,8 +58,22 @@ public class SettingsFragment extends Fragment {
         logout_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                auth.signOut();
-                startActivity(new Intent(getActivity().getApplicationContext(), LoginActivity.class));
+                new MaterialAlertDialogBuilder(getActivity())
+                        .setTitle("Confirm logout")
+                        .setMessage("Are you sure want to logout from this account")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                auth.signOut();
+                                startActivity(new Intent(getActivity().getApplicationContext(), LoginActivity.class));
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        }).show();
             }
         });
 
@@ -64,8 +82,23 @@ public class SettingsFragment extends Fragment {
             public void onClick(View v) {
                 String new_name = user_name_in_settings.getText().toString();
                 String new_email = user_email_in_settings.getText().toString();
-                databaseReference.child("name").setValue(new_name);
-                databaseReference.child("email").setValue(new_email);
+                new MaterialAlertDialogBuilder(getActivity())
+                        .setTitle("Confirm changes")
+                        .setMessage("Are you sure want to update data")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                databaseReference.child("name").setValue(new_name);
+                                databaseReference.child("email").setValue(new_email);
+                                Toast.makeText(getActivity().getApplicationContext(), "Data updated successfully", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        }).show();
             }
         });
 

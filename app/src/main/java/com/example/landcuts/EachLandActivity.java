@@ -8,7 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +39,8 @@ public class EachLandActivity extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseDatabase database;
     DatabaseReference databaseReference;
+    LinearLayout acquirings_data;
+    Switch show_your_acquirings_switch;
 
 
     @Override
@@ -58,6 +63,8 @@ public class EachLandActivity extends AppCompatActivity {
         buy_button = findViewById(R.id.buy_button);
         sell_button = findViewById(R.id.sell_button);
         total_invested_by_user = findViewById(R.id.total_invested_by_user);
+        acquirings_data = findViewById(R.id.acquirings_data);
+        show_your_acquirings_switch = findViewById(R.id.show_your_acquirings_switch);
 
         Intent intent = getIntent();
         Land land = (Land) intent.getSerializableExtra("land");
@@ -126,7 +133,6 @@ public class EachLandActivity extends AppCompatActivity {
 
                                                 currentOwner.setNo_of_shares_bought(currentOwner.getNo_of_shares_bought() + 1);
                                                 int index = owners.indexOf(currentOwner) + 1;
-                                                System.out.println("index of current owner = "+index+1);
                                                 databaseReference1.child(String.valueOf(index)).child("no_of_shares").setValue(currentOwner.getNo_of_shares_bought());
 
                                                 databaseReference1.child(String.valueOf(index)).child("id").setValue(index);
@@ -172,7 +178,6 @@ public class EachLandActivity extends AppCompatActivity {
                                         getCurrentBalanceOfCurrentUser(current_user,true,land);
 //                                        current_user.setCurrentBalance(current_bal);
 ////                                        current_user.setCurrentBalance(current_user.getCurrentBalance()+(land.getCurrentPrice()*currentOwner.getNo_of_shares_bought()));
-//                                        System.out.println(current_bal +" in buy listener");
 //                                        database.getReference().child("user").child(auth.getCurrentUser().getUid()).child("currentBalance").setValue(current_user.getCurrentBalance());
 
 
@@ -204,7 +209,6 @@ public class EachLandActivity extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     if(auth.getCurrentUser()!=null) {
                                         int no_of_shares = 0;
-                                        databaseReference = database.getReference().child("land").child(String.valueOf(land.getId()));
                                         databaseReference = database.getReference().child("land").child(String.valueOf(land.getId())).child("users_who_bought_current_land");
                                         boolean exists = false;
                                         Transaction currentOwner = null;
@@ -270,18 +274,27 @@ public class EachLandActivity extends AppCompatActivity {
             }
         });
 
-        show_your_acquirings.setOnClickListener(new View.OnClickListener() {
+        show_your_acquirings_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                for(Transaction transaction:owners){
-                    if(transaction.getBoughtBy().equals(auth.getCurrentUser().getUid().toString())){
-                        int no_of_shares = transaction.getNo_of_shares_bought();
-                        total_cuts_ofLand_bought_by_user.setText(String.valueOf(no_of_shares));
-                        long current_value = no_of_shares*land.getCurrentPrice();
-                        total_price_ofShare_bought_by_user.setText((Constants.rupee_symbol+String.valueOf(current_value)));
-                        total_invested_by_user.setText((Constants.rupee_symbol+String.valueOf(transaction.gettotal_invested())));
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    int no_of_shares=0;
+                    long current_value=0, invested=0;
+                    for(Transaction transaction:owners){
+                        if(transaction.getBoughtBy().equals(auth.getCurrentUser().getUid().toString())){
+                            no_of_shares = transaction.getNo_of_shares_bought();
+                            current_value = no_of_shares*land.getCurrentPrice();
+                            invested = transaction.gettotal_invested();
+                        }
                     }
+                    total_cuts_ofLand_bought_by_user.setText(String.valueOf(no_of_shares));
+                    total_price_ofShare_bought_by_user.setText((Constants.rupee_symbol+String.valueOf(current_value)));
+                    total_invested_by_user.setText((Constants.rupee_symbol+String.valueOf(invested)));
+                    acquirings_data.setVisibility(View.VISIBLE);
+                }else{
+                    acquirings_data.setVisibility(View.INVISIBLE);
                 }
+
             }
         });
     }
@@ -299,11 +312,9 @@ public class EachLandActivity extends AppCompatActivity {
                     if(dataSnapshot.child("users_who_bought_current_land").exists()){
                         for (DataSnapshot eachDataSnapshot : dataSnapshot.child("users_who_bought_current_land").getChildren()){
                             if (eachDataSnapshot.child("bought_by").getValue().toString().equals(auth.getCurrentUser().getUid())) {
-                                System.out.println("current price of land = " + land_current_price);
                                 long no_of_shares = 0;
                                 if(eachDataSnapshot.child("no_of_shares").getValue()!=null)
                                     no_of_shares = (long) eachDataSnapshot.child("no_of_shares").getValue();
-                                System.out.println("no_of_shares = " + no_of_shares);
                                 currentBalance[0] = currentBalance[0] + (no_of_shares * land_current_price);
 
                             }
@@ -364,7 +375,6 @@ public class EachLandActivity extends AppCompatActivity {
 
             }
         });
-        System.out.println("owners size = "+owners.size());
         return owners;
     }
 

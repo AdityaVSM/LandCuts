@@ -94,6 +94,7 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+
     public void set_land_view(LandViewAdapter landViewAdapter,DatabaseReference databaseReference){
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -136,18 +137,32 @@ public class HomeFragment extends Fragment {
     }
 
     public void set_current_worth(FirebaseAuth auth, DatabaseReference databaseReference){
-        final long[] current_worth = {0};
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        DatabaseReference user_database_reference = database.getReference().child("user");
+        database.getReference().child("land").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    if(dataSnapshot.child("uid").getValue().toString().equals(auth.getCurrentUser().getUid())){
-                        current_worth[0] = (long) dataSnapshot.child("currentBalance").getValue();
-                        current_worth_view.setText((Constants.rupee_symbol+String.valueOf(current_worth[0]).toString()));
+                long currentBalance = 0;
+                for (DataSnapshot landSnapshot : snapshot.getChildren()){
+                    if(landSnapshot.child("users_who_bought_current_land").exists()){
+                        for (DataSnapshot eachLandInfo : landSnapshot.child("users_who_bought_current_land").getChildren()){
+                            if(eachLandInfo.child("bought_by").getValue().toString().equals(auth.getCurrentUser().getUid())){
+                                long currentPrice, no_of_cuts_bought;
+                                if(landSnapshot.child("currentPrice").getValue()!=null)
+                                    currentPrice = (long)landSnapshot.child("currentPrice").getValue();
+                                else
+                                    currentPrice = 0;
+                                if(eachLandInfo.child("no_of_shares").getValue()!=null)
+                                    no_of_cuts_bought = (long)eachLandInfo.child("no_of_shares").getValue();
+                                else
+                                    no_of_cuts_bought = 0;
+                                currentBalance += no_of_cuts_bought*currentPrice;
+                            }
+                        }
                     }
                 }
+                current_worth_view.setText((Constants.rupee_symbol+String.valueOf(currentBalance)));
+                user_database_reference.child(auth.getCurrentUser().getUid()).child("currentBalance").setValue(currentBalance);
             }
-
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

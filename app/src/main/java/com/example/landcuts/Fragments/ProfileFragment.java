@@ -80,6 +80,36 @@ public class ProfileFragment extends Fragment {
     }
 
     public void getBasicUserData(){
+//        DatabaseReference user_database_reference = firebaseDatabase.getReference().child("user");
+//        firebaseDatabase.getReference().child("land").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                long currentBalance = 0;
+//                for (DataSnapshot landSnapshot : snapshot.getChildren()){
+//                    if(landSnapshot.child("users_who_bought_current_land").exists()){
+//                        for (DataSnapshot eachLandInfo : landSnapshot.child("users_who_bought_current_land").getChildren()){
+//                            if(eachLandInfo.child("bought_by").getValue().toString().equals(auth.getCurrentUser().getUid())){
+//                                long currentPrice;
+//                                if(landSnapshot.child("currentPrice").getValue()!=null)
+//                                    currentPrice = (long)landSnapshot.child("currentPrice").getValue();
+//                                else
+//                                    currentPrice = 0;
+//                                long no_of_cuts_bought = (long)eachLandInfo.child("no_of_shares").getValue();
+//                                currentBalance += no_of_cuts_bought*currentPrice;
+//                            }
+//                        }
+//                    }
+//                }
+//                user_database_reference.child(auth.getCurrentUser().getUid()).child("currentBalance").setValue(currentBalance);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

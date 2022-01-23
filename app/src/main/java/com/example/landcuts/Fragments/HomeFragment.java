@@ -1,6 +1,8 @@
 package com.example.landcuts.Fragments;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,7 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.example.landcuts.Adapters.LandViewAdapter;
 import com.example.landcuts.Constants.Constants;
@@ -38,6 +42,7 @@ public class HomeFragment extends Fragment {
     LandViewAdapter landViewAdapter;
     TextView current_worth_view;
     ArrayList<Land> arrayList;
+    VideoView videoView;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -49,14 +54,24 @@ public class HomeFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
         diff_land_list_view= view.findViewById(R.id.diff_land_list_view);
         current_worth_view = view.findViewById(R.id.current_worth_view);
+        videoView = view.findViewById(R.id.videoView);
 
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
 
+        Uri uri = Uri.parse("android.resource://"+getActivity().getPackageName()+"/"+R.raw.test);
+        videoView.setVideoURI(uri);
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                videoView.start();
+            }
+        });
 
         arrayList = new ArrayList<>();
         landViewAdapter = new LandViewAdapter(getActivity().getApplicationContext(), arrayList);
         diff_land_list_view.setAdapter(landViewAdapter);
+
 
 //        DatabaseReference databaseReference = database.getReference().child("land").child("1");
 //        databaseReference.setValue(new Land("Land1","Arizona",10000));

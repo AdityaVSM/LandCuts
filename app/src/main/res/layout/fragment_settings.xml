@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.SettingsFragment"
     android:orientation="vertical"
+    android:padding="10dp"
     android:background="@drawable/bggradient">
 
     <LinearLayout
@@ -38,8 +39,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="30dp">
+            android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -75,9 +75,36 @@
                 android:id="@+id/update_user_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#fece2f"
                 android:text="Update" />
             </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:text="About us"
+                android:textSize="20sp"/>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="45dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quantico_italic"
+                    android:gravity="left"
+                    android:text="@string/about_us"
+                    android:textColor="#3043B6"
+                    android:textSize="18sp" />
+            </ScrollView>
+
+        </LinearLayout>
     </LinearLayout>
 
 </FrameLayout>

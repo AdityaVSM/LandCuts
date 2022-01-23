@@ -41,7 +41,7 @@
                     android:fontFamily="sans-serif-black"
                     android:includeFontPadding="false"
                     android:textColor="@color/white"
-                    android:textSize="25dp" />
+                    android:textSize="40sp" />
 
             </RelativeLayout>
 

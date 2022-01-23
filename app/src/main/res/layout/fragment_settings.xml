@@ -98,6 +98,7 @@
                 android:textSize="30dp" />
 
             <TextView
+                android:id="@+id/editprofile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -109,6 +110,7 @@
                 android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"/>
 
             <TextView
+                android:id="@+id/changepassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -139,6 +141,7 @@
                 android:textSize="30dp" />
 
             <TextView
+                android:id="@+id/help"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -150,6 +153,7 @@
                 android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"/>
 
             <TextView
+                android:id="@+id/about"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

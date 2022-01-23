@@ -12,11 +12,18 @@
         android:roundIcon="@mipmap/ic_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LandCuts">
+        <activity
+            android:name=".help"
+            android:exported="false" />
+        <activity
+            android:name=".aboutus"
+            android:exported="false" />
         <activity android:name=".EachLandActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

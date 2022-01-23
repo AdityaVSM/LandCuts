@@ -4,24 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".help">
+    tools:context=".help"
+    android:background="@drawable/bggradient">
 
-    <LinearLayout
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="30dp"
-            android:text="@string/about_us"
-            android:textColor="@color/black" />
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:lineSpacingExtra="20dp"
+        android:padding="30dp"
+        android:text="@string/about_us"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif-black"/>
 
 </RelativeLayout>

@@ -4,14 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".aboutus">
+    tools:context=".aboutus"
+    android:background="@drawable/bggradient">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/aditya"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="245dp"
+        android:drawableLeft="@drawable/person_icon"
+        android:paddingLeft="20dp"
+        android:text="    Aditya VSM"
+        android:textSize="30dp" />
 
-
-
-    </LinearLayout>
 
 </RelativeLayout>

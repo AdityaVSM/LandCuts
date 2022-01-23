@@ -13,10 +13,14 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.landcuts.LoginActivity;
+import com.example.landcuts.help;
+import com.example.landcuts.aboutus;
 import com.example.landcuts.R;
+import com.example.landcuts.UpdateDetailsActivity;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,8 +34,7 @@ public class SettingsFragment extends Fragment {
     FirebaseAuth auth;
     FirebaseDatabase database;
     DatabaseReference databaseReference;
-    TextInputEditText user_name_in_settings, user_email_in_settings;
-    Button update_user_details;
+    TextView editprofile, help, about;
     ImageButton logout_button;
 
     public SettingsFragment() {
@@ -48,12 +51,10 @@ public class SettingsFragment extends Fragment {
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference().child("user").child(auth.getCurrentUser().getUid());
 
-        user_name_in_settings = view.findViewById(R.id.user_name_in_settings);
-        user_email_in_settings = view.findViewById(R.id.user_email_in_settings);
         logout_button = view.findViewById(R.id.logout_button);
-        update_user_details = view.findViewById(R.id.update_user_details);
-
-        getUserData();
+        editprofile = view.findViewById(R.id.editprofile);
+        help = view.findViewById(R.id.help);
+        about = view.findViewById(R.id.about);
 
         logout_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,53 +77,27 @@ public class SettingsFragment extends Fragment {
                         }).show();
             }
         });
-
-        update_user_details.setOnClickListener(new View.OnClickListener() {
+        editprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String new_name = user_name_in_settings.getText().toString();
-                String new_email = user_email_in_settings.getText().toString();
-                new MaterialAlertDialogBuilder(getActivity())
-                        .setTitle("Confirm changes")
-                        .setMessage("Are you sure want to updateprofile data")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                databaseReference.child("name").setValue(new_name);
-                                databaseReference.child("email").setValue(new_email);
-                                Toast.makeText(getActivity().getApplicationContext(), "Data updated successfully", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                            }
-                        }).show();
+                startActivity(new Intent(getActivity().getApplicationContext(), UpdateDetailsActivity.class));
+            }
+        });
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity().getApplicationContext(), help.class));
+            }
+        });
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity().getApplicationContext(), aboutus.class));
             }
         });
 
         return view;
     }
 
-    private void getUserData() {
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            String name,email;
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                name = (String) snapshot.child("name").getValue();
-                email = (String) snapshot.child("email").getValue();
-                System.out.println("settings"+name);
-                user_name_in_settings.setText(name);
-                user_email_in_settings.setText(email);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-
-
-        });
-    }
 }

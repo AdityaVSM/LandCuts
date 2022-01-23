@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LandCuts">
+        <activity android:name=".UpdateDetailsActivity"></activity>
         <activity
             android:name=".help"
             android:exported="false" />

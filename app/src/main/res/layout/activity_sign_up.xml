@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/bggradient"
     tools:context=".SignUpActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_centerInParent="true"
         android:gravity="center">
 
         <ImageView
@@ -20,12 +19,21 @@
             android:background="@drawable/logo_small"/>
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Land cuts"
+            android:gravity="center"
+            android:textSize="60sp"
+            android:fontFamily="cursive"
+            android:textColor="#122ECC"/>
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:text="Create account"
-            android:textSize="30sp"
-            android:layout_marginBottom="20dp"/>
+            android:textSize="20sp"
+            android:layout_marginBottom="10dp"/>
 
 
         <EditText
@@ -34,7 +42,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text_shape"
             android:textColor="@color/black"
-            android:padding="7dp"
+            android:padding="10dp"
             android:hint="Name"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
@@ -46,7 +54,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text_shape"
             android:textColor="@color/black"
-            android:padding="7dp"
+            android:padding="10dp"
             android:hint="Email Address"
             android:inputType="textEmailAddress"
             android:layout_marginStart="20dp"
@@ -59,7 +67,7 @@
             android:background="@drawable/edit_text_shape"
             android:textColor="@color/black"
             android:hint="Password"
-            android:padding="7dp"
+            android:padding="10dp"
             android:inputType="textPassword"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
@@ -70,7 +78,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text_shape"
             android:textColor="@color/black"
-            android:padding="7dp"
+            android:padding="10dp"
             android:hint="Confirm password"
             android:layout_marginStart="20dp"
             android:inputType="textPassword"
@@ -85,7 +93,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:padding="15dp"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginTop="15dp"/>
 
     </LinearLayout>
 

@@ -106,7 +106,6 @@ public class EachLandActivity extends AppCompatActivity {
                                                 }
                                             }
                                             if(!exists){
-                                                databaseReference.child(String.valueOf(owners.size() + 1)).child("bought_by").setValue(auth.getCurrentUser().getUid().toString());
                                                 currentOwner.setBoughtBy(auth.getCurrentUser().getUid());
                                                 currentOwner.setNo_of_shares_bought(1);
                                                 currentOwner.settotal_invested(land.getCurrentPrice());

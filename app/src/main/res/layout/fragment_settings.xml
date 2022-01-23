@@ -15,9 +15,8 @@
         <LinearLayout
             android:id="@+id/profile1"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:padding="10dp"
             android:orientation="vertical">
 
@@ -29,8 +28,8 @@
                 android:background="@drawable/logout_icon" />
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/person_icon" />
 
@@ -39,19 +38,21 @@
         <LinearLayout
             android:id="@+id/layout2"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/layout1"
+            android:layout_margin="10dp"
+            android:elevation="10dp"
+            android:background="@drawable/card_background"
             android:layout_marginTop="30dp"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="10dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
                 android:padding="10dp"
                 android:text="Account Settings"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="30dp" />
 
             <TextView
@@ -59,7 +60,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="sans-serif-black"
                 android:padding="10dp"
                 android:text="Edit Profile"
                 android:textColor="@color/black"
@@ -71,7 +71,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="sans-serif-black"
                 android:padding="10dp"
                 android:text="Change password"
                 android:textColor="@color/black"
@@ -83,18 +82,20 @@
         <LinearLayout
             android:id="@+id/layout3"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:background="@drawable/card_background"
+            android:layout_margin="10dp"
+            android:elevation="10dp"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="10dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
                 android:padding="10dp"
                 android:text="Support"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="30dp" />
 
             <TextView
@@ -102,7 +103,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="sans-serif-black"
                 android:padding="10dp"
                 android:text="Help"
                 android:textColor="@color/black"
@@ -114,7 +114,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="sans-serif-black"
                 android:padding="10dp"
                 android:text="About us"
                 android:textColor="@color/black"

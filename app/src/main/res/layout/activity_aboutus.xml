@@ -7,18 +7,97 @@
     tools:context=".aboutus"
     android:background="@drawable/bggradient">
 
+
     <TextView
-        android:id="@+id/aditya"
+        android:id="@+id/about_us"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="245dp"
-        android:drawableLeft="@drawable/person_icon"
-        android:paddingLeft="20dp"
-        android:text="    Aditya VSM"
+        android:padding="20dp"
+        android:text="ABOUT US"
+        android:textColor="@color/black"
+        android:textSize="35dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/backend_developer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/about_us"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif-black"
+        android:padding="10dp"
+        android:text="Backend Developer"
+        android:textColor="@color/black"
         android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/adityavsm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/backend_developer"
+        android:layout_marginTop="15dp"
+        android:drawableStart="@drawable/person_icon"
+        android:fontFamily="sans-serif-black"
+        android:paddingLeft="40dp"
+        android:text="    ADITYA VSM"
+        android:textColor="@color/black"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/frontend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/adityavsm"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-black"
+        android:padding="10dp"
+        android:text="Frontend Developer"
+        android:textColor="@color/black"
+        android:textSize="30dp" />
+
+    <TextView
+
+        android:id="@+id/akash_sangnure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/frontend"
+        android:layout_marginTop="15dp"
+        android:fontFamily="sans-serif-black"
+        android:drawableStart="@drawable/person_icon"
+        android:paddingLeft="40dp"
+        android:text="    AKASH SANGNURE"
+        android:textColor="@color/black"
+        android:textSize="25dp" />
+
+
+    <TextView
+        android:id="@+id/testing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/akash_sangnure"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-black"
+        android:padding="10dp"
+        android:text="Testing"
+        android:textColor="@color/black"
+        android:textSize="30dp" />
+
+    <TextView
+
+        android:id="@+id/aniruddh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/testing"
+        android:layout_marginTop="15dp"
+        android:fontFamily="sans-serif-black"
+        android:paddingLeft="40dp"
+        android:drawableLeft="@drawable/person_icon"
+        android:text="    Aniruddh Bharadwaj"
+        android:textColor="@color/black"
+        android:textSize="25dp" />
+
+
+
 
 
 </RelativeLayout>

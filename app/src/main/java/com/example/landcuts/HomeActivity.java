@@ -9,8 +9,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.landcuts.Fragments.HomeFragment;
-import com.example.landcuts.Fragments.SettingsFragment;
 import com.example.landcuts.Fragments.ProfileFragment;
+import com.example.landcuts.Fragments.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;

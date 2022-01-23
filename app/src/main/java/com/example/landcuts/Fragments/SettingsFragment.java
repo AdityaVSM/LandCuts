@@ -84,7 +84,7 @@ public class SettingsFragment extends Fragment {
                 String new_email = user_email_in_settings.getText().toString();
                 new MaterialAlertDialogBuilder(getActivity())
                         .setTitle("Confirm changes")
-                        .setMessage("Are you sure want to update data")
+                        .setMessage("Are you sure want to updateprofile data")
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

@@ -2,7 +2,7 @@
     <string name="app_name">Land cuts</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="about_us">
-        \t\t\t\tLand cuts is an platform providing crypto-inspired trading opportunity.
+        \t\t\t\tLand cuts is an crypto-inspired platform providing trading opportunity.
         This app can be used to Buy/sell land cuts(parts of land) from around the world which is by default set to 100 initially.
         There are 100 cuts available for each land and is updated whenever a user buys/sells share.
         The land properties are added by admin and their initial price is also set by admin considering current value in that location.

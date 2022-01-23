@@ -24,7 +24,7 @@
             android:layout_width="52dp"
             android:layout_height="49dp"
             android:layout_gravity="right"
-            android:background="@drawable/ic_baseline_power_settings_new_24" />
+            android:background="@drawable/ic_baseline_power_settings_new_24_white" />
 
         <ImageView
             android:layout_width="100dp"
@@ -58,7 +58,7 @@
                 android:drawableLeft="@drawable/ic_baseline_person_24"
                 android:drawablePadding="10dp"
                 android:text="Akash Sangnure"
-                android:textColor="@color/black"/>
+                android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -73,7 +73,7 @@
                 android:drawableLeft="@drawable/ic_baseline_person_24"
                 android:drawablePadding="10dp"
                 android:text="akashsangnure0576@gmail.com"
-                android:textColor="@color/black"/>
+                android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -88,7 +88,7 @@
                 android:drawableLeft="@drawable/ic_baseline_phone_24"
                 android:drawablePadding="10dp"
                 android:text="9353532976"
-                android:textColor="@color/black"/>
+                android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -103,13 +103,13 @@
                 android:drawableLeft="@drawable/ic_baseline_lock_24"
                 android:drawablePadding="10dp"
                 android:text="akash_sangnure"
-                android:textColor="@color/black"/>
+                android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fece2f"
+            android:background="#A83B0C"
             android:text="Update" />
     </LinearLayout>
     </LinearLayout>

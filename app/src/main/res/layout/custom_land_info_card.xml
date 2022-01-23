@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
-    android:background="@color/white">
+    android:background="@color/black">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +22,8 @@
             android:layout_height="wrap_content"
             android:gravity="start"
             android:text="Land1"
-            android:textColor="@color/black"
+            android:fontFamily="sans-serif-black"
+            android:textColor="@color/white"
             android:textSize="25sp"/>
 
         <TextView
@@ -30,7 +31,7 @@
             android:gravity="right"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:text="50000"
             android:textSize="25sp"/>
     </LinearLayout>
@@ -45,6 +46,8 @@
             android:id="@+id/location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:textColor="@color/white"
             android:text="Arizona"
             android:textSize="18sp"/>
         <TextView
@@ -52,6 +55,7 @@
             android:layout_width="match_parent"
             android:gravity="right"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:text="5/10"
             android:textSize="18sp"/>
     </LinearLayout>
@@ -63,7 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_gravity="center"
-        android:background="@color/black"/>
+        android:background="@color/white"/>
 
 
 </LinearLayout>

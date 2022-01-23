@@ -18,7 +18,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="#556b2f"
+            android:background="#A83B0C"
             android:padding="20dp">
 
             <ImageView
@@ -54,7 +54,7 @@
                 android:layout_height="125dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#808000"
+                app:cardBackgroundColor="#A83B0C"
                 android:elevation="40dp">
 
                 <RelativeLayout
@@ -95,7 +95,7 @@
                 android:layout_height="125dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#808000"
+                app:cardBackgroundColor="#A83B0C"
                 android:elevation="40dp">
 
                 <RelativeLayout
@@ -135,7 +135,7 @@
                 android:layout_height="125dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#808000"
+                app:cardBackgroundColor="#A83B0C"
                 android:elevation="40dp">
 
                 <RelativeLayout

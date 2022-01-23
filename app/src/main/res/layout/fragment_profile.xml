@@ -79,18 +79,17 @@
                             android:fontFamily="sans-serif-black"
                             android:textColor="#3043B6"
                             android:includeFontPadding="false"
-                            android:textSize="20dp" />
+                            android:textSize="20sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/invested_bal_in_profile_fragment"
                             android:layout_centerHorizontal="true"
-                            android:fontFamily="sans-serif-black"
                             android:textColor="#3043B6"
                             android:includeFontPadding="false"
                             android:text="Invested"
-                            android:textSize="20dp" />
+                            android:textSize="18sp" />
                     </RelativeLayout>
 
                 </com.google.android.material.card.MaterialCardView>
@@ -122,21 +121,21 @@
                             android:fontFamily="sans-serif-black"
                             android:textColor="#3043B6"
                             android:includeFontPadding="false"
-                            android:textSize="20dp" />
+                            android:textSize="20sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/current_bal_in_profile_fragment"
                             android:layout_centerHorizontal="true"
-                            android:fontFamily="sans-serif-black"
                             android:textColor="#3043B6"
                             android:includeFontPadding="false"
                             android:text="Holdings"
-                            android:textSize="20dp" />
+                            android:textSize="18sp" />
                     </RelativeLayout>
 
                 </com.google.android.material.card.MaterialCardView>
+
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="0dp"
                     android:layout_height="125dp"
@@ -163,22 +162,22 @@
                             android:fontFamily="sans-serif-black"
                             android:textColor="#3043B6"
                             android:includeFontPadding="false"
-                            android:textSize="20dp" />
+                            android:textSize="20sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/profit_bal_in_profile_fragment"
                             android:layout_centerHorizontal="true"
-                            android:fontFamily="sans-serif-black"
                             android:textColor="#3043B6"
                             android:includeFontPadding="false"
                             android:text="Profit"
-                            android:textSize="20dp" />
+                            android:textSize="18sp" />
                     </RelativeLayout>
 
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="horizontal"

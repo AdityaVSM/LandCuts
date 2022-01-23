@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.SettingsFragment"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@drawable/bggradient">
 
     <LinearLayout
         android:layout_width="match_parent"

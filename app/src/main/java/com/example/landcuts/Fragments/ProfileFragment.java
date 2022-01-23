@@ -1,19 +1,26 @@
 package com.example.landcuts.Fragments;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.landcuts.Adapters.LandViewAdapter;
 import com.example.landcuts.Constants.Constants;
+import com.example.landcuts.EachLandActivity;
+import com.example.landcuts.Models.Land;
 import com.example.landcuts.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -32,28 +39,77 @@ public class ProfileFragment extends Fragment {
     FirebaseAuth auth;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    LandViewAdapter landViewAdapter;
+    ListView diff_land_list_view_bought_by_user;
 
     public ProfileFragment() {
         // Required empty public constructor
-
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_profile, container, false);
 
-        user_name = view.findViewById(R.id.user_name);
-        profit_bal_in_profile_fragment = view.findViewById(R.id.profit_bal_in_profile_fragment);
-        invested_bal_in_profile_fragment = view.findViewById(R.id.invested_bal_in_profile_fragment);
-        current_bal_in_profile_fragment = view.findViewById(R.id.current_bal_in_profile_fragment);
         auth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("user");
 
-        getData();
+        user_name = view.findViewById(R.id.user_name);
+        profit_bal_in_profile_fragment = view.findViewById(R.id.profit_bal_in_profile_fragment);
+        invested_bal_in_profile_fragment = view.findViewById(R.id.invested_bal_in_profile_fragment);
+        current_bal_in_profile_fragment = view.findViewById(R.id.current_bal_in_profile_fragment);
+        diff_land_list_view_bought_by_user = view.findViewById(R.id.diff_land_list_view_bought_by_user);
+
+        ArrayList arrayList = new ArrayList<>();
+        landViewAdapter = new LandViewAdapter(getActivity().getApplicationContext(), arrayList);
+        diff_land_list_view_bought_by_user.setAdapter(landViewAdapter);
+
+        getBasicUserData();
+        getLandBoughtByUser();
+
+        diff_land_list_view_bought_by_user.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Land land = (Land) parent.getItemAtPosition(position);
+                Intent intent = new Intent(getActivity().getApplicationContext(), EachLandActivity.class);
+                intent.putExtra("land", land);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 
-    public void getData(){
+    public void getBasicUserData(){
+//        DatabaseReference user_database_reference = firebaseDatabase.getReference().child("user");
+//        firebaseDatabase.getReference().child("land").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                long currentBalance = 0;
+//                for (DataSnapshot landSnapshot : snapshot.getChildren()){
+//                    if(landSnapshot.child("users_who_bought_current_land").exists()){
+//                        for (DataSnapshot eachLandInfo : landSnapshot.child("users_who_bought_current_land").getChildren()){
+//                            if(eachLandInfo.child("bought_by").getValue().toString().equals(auth.getCurrentUser().getUid())){
+//                                long currentPrice;
+//                                if(landSnapshot.child("currentPrice").getValue()!=null)
+//                                    currentPrice = (long)landSnapshot.child("currentPrice").getValue();
+//                                else
+//                                    currentPrice = 0;
+//                                long no_of_cuts_bought = (long)eachLandInfo.child("no_of_shares").getValue();
+//                                currentBalance += no_of_cuts_bought*currentPrice;
+//                            }
+//                        }
+//                    }
+//                }
+//                user_database_reference.child(auth.getCurrentUser().getUid()).child("currentBalance").setValue(currentBalance);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -80,6 +136,51 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getContext(), "Unable to retrieve data", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void getLandBoughtByUser(){
+        DatabaseReference databaseReference = firebaseDatabase.getReference().child("land");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                landViewAdapter.clear();
+                for(DataSnapshot landSnapshot : snapshot.getChildren()){
+                    if(landSnapshot.child("users_who_bought_current_land").exists()){
+                        System.out.println("land is bought");
+                        for (DataSnapshot eachLandInfo : landSnapshot.child("users_who_bought_current_land").getChildren()){
+                            if(eachLandInfo.child("bought_by").getValue().toString().equals(auth.getCurrentUser().getUid())){
+                                System.out.println("land is bought by current user");
+                                String name = landSnapshot.child("name").getValue().toString();
+                                String location = landSnapshot.child("location").getValue().toString();
+                                long initialPrice, currentPrice;
+                                if(landSnapshot.child("initialPrice").getValue()!=null)
+                                    initialPrice = (long)landSnapshot.child("initialPrice").getValue();
+                                else
+                                    initialPrice = 0;
+                                if(landSnapshot.child("currentPrice").getValue()!=null)
+                                    currentPrice = (long)landSnapshot.child("currentPrice").getValue();
+                                else
+                                    currentPrice = 0;
+                                Land land = new Land(name,location,initialPrice);
+                                land.setCurrentPrice(currentPrice);
+                                if(landSnapshot.child("no_of_available_cuts").getValue()!=null)
+                                    land.setNo_of_available_cuts(((Long)landSnapshot.child("no_of_available_cuts").getValue()).intValue());
+                                else
+                                    land.setNo_of_available_cuts(100);
+                                land.setId(((Long)landSnapshot.child("id").getValue()).intValue());
+                                landViewAdapter.add(land);
+                                landViewAdapter.notifyDataSetChanged();
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }

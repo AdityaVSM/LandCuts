@@ -21,7 +21,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="#556b2f"
+                android:background="@drawable/card_background"
                 android:padding="20dp">
 
                 <ImageView
@@ -40,7 +40,7 @@
                     android:layout_toRightOf="@+id/profile"
                     android:fontFamily="sans-serif-black"
                     android:includeFontPadding="false"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="25dp" />
 
             </RelativeLayout>
@@ -57,7 +57,7 @@
                     android:layout_height="125dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="#808000"
+                    app:cardBackgroundColor="@color/white"
                     android:elevation="40dp">
 
                     <RelativeLayout
@@ -77,6 +77,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:fontFamily="sans-serif-black"
+                            android:textColor="#3043B6"
                             android:includeFontPadding="false"
                             android:textSize="20dp" />
 
@@ -86,8 +87,9 @@
                             android:layout_below="@+id/invested_bal_in_profile_fragment"
                             android:layout_centerHorizontal="true"
                             android:fontFamily="sans-serif-black"
+                            android:textColor="#3043B6"
                             android:includeFontPadding="false"
-                            android:text="Balance"
+                            android:text="Invested"
                             android:textSize="20dp" />
                     </RelativeLayout>
 
@@ -98,7 +100,7 @@
                     android:layout_height="125dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="#808000"
+                    app:cardBackgroundColor="@color/white"
                     android:elevation="40dp">
 
                     <RelativeLayout
@@ -118,6 +120,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:fontFamily="sans-serif-black"
+                            android:textColor="#3043B6"
                             android:includeFontPadding="false"
                             android:textSize="20dp" />
 
@@ -127,6 +130,7 @@
                             android:layout_below="@+id/current_bal_in_profile_fragment"
                             android:layout_centerHorizontal="true"
                             android:fontFamily="sans-serif-black"
+                            android:textColor="#3043B6"
                             android:includeFontPadding="false"
                             android:text="Holdings"
                             android:textSize="20dp" />
@@ -138,14 +142,13 @@
                     android:layout_height="125dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="#808000"
+                    app:cardBackgroundColor="@color/white"
                     android:elevation="40dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="5dp">
-
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
@@ -158,6 +161,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:fontFamily="sans-serif-black"
+                            android:textColor="#3043B6"
                             android:includeFontPadding="false"
                             android:textSize="20dp" />
 
@@ -167,6 +171,7 @@
                             android:layout_below="@+id/profit_bal_in_profile_fragment"
                             android:layout_centerHorizontal="true"
                             android:fontFamily="sans-serif-black"
+                            android:textColor="#3043B6"
                             android:includeFontPadding="false"
                             android:text="Profit"
                             android:textSize="20dp" />
